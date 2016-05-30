@@ -1,0 +1,9 @@
+= simple_form_for(@image_file) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :filename
+    = f.association :file_dir
+
+  .form-actions
+    = f.button :submit

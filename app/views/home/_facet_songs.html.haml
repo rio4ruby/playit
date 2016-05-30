@@ -1,0 +1,4 @@
+- search.facet(:song_id).rows.first(8).each do |row|
+  %p
+    = row.instance.name
+    = "(#{row.count})"

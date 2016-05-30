@@ -1,0 +1,40 @@
+.container-fluid
+  .row-fluid
+    .span12
+      %header.search
+        = form_tag("/home/dosearch", :method => "get", :class => 'form-search', :remote => true) do
+          = search_field_tag(:q,@q, :class => 'inline', :autocomplete => 'off')
+          = submit_tag("Search", :id => 'search-button', :class => 'btn' )
+
+          .btn-group{ "data-toggle" => "buttons-checkbox", :id => 'search-options1' }
+            %label{:for => "Artist", :class => 'btn'} Artist
+             = check_box_tag("Artist","1",params[:Artist],:class => "inline")
+             %label{:for => "Album", :class => 'btn'} Album
+             = check_box_tag("Album","1",params[:Album],:class => "inline")
+             %label{:for => "AudioFile", :class => 'btn'} Track
+             = check_box_tag("AudioFile","1",params[:AudioFile],:class => "inline")
+
+
+
+
+
+            -# %button.btn#Artist{ :value => "1", :name => 'Artist' } Artist
+            -# %button.btn#Album{ :value => "1", :name => 'Album' } Album
+            -# %button.btn#AudioFile{ :value => "1", :name => 'AudioFile' } Track
+
+          -# .btn-group{ "data-toggle" => "buttons-checkbox", :id => 'search-options2' }
+          -#   %input.btn#Artist{:type=>"checkbox", :value=>"1", :name=>"Artist", :checked=>"checked"}
+          -#   %input.btn#Album{:type=>"checkbox", :value=>"1", :name=>"Album", :checked=>"checked"}
+          -#   %input.btn#AudioFile{:type=>"checkbox", :value=>"1", :name=>"AudioFile", :checked=>"checked"}
+
+
+
+             -# %input{:id=>"Artist", :class=>"inline cbbtn", :type=>"checkbox", :value=>"1", :name=>"Artist", :checked=>"checked"}
+
+.container-fluid.sr-hits
+  = render(:partial => 'hit', :collection => @search.hits, :as => :hit, :locals => { :search => @search } )
+.container-fluid
+  .row-fluid
+    .span12
+      %footer{ :class => 'sr-pagination' }
+        = paginate @search.hits

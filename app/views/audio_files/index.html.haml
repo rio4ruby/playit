@@ -1,0 +1,34 @@
+- model_class = AudioFile.new.class
+.row
+  .span9
+    %h2=t '.title', :default => model_class.model_name.human.pluralize
+.row
+  .span9
+    %table.table.table-striped
+      %thead
+        %tr
+          %th #
+          %th Name
+          %th Artist
+          %th Album
+          %th Genre
+          %th Length
+          %th Actions
+      %tbody
+        - @audio_files.each do |audio_file|
+          %tr
+            %td= audio_file.tracknum
+            %td= audio_file.song.name
+            %td= audio_file.artist.name
+            %td= audio_file.album.name
+            %td= (audio_file.genre ? audio_file.genre.name : "")
+            %td= Time.at(audio_file.length).strftime("%M:%S").sub(/^0/,'')
+            %td=link_to "Add to Playing", audio_files_add_to_playing_path(:id => audio_file.id)
+              
+
+.row
+  .span9
+    = paginate @audio_files
+
+
+

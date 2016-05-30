@@ -1,0 +1,7 @@
+- content_for :tabs_head do
+  %li
+    %a{ :href => "#tab-albums", 'data-toggle' => "tab" } Albums
+
+- content_for :tabs_content do
+  .tab-pane.active#tab-albums
+    = render :partial => 'albums/tab', :locals => { :albums => albums }

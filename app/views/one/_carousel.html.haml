@@ -1,0 +1,24 @@
+#myCarousel.carousel.slide
+  / Carousel items
+  .carousel-inner
+    .playlist-items
+      = render :partial => "list_nodes/playlist_playable_items", :locals => { :nodetree => nodetree, :node_id => node_id, :playing_playdata => playing_playdata }
+
+    .car-overlay
+      %a.playbutton{:href => '#pb-container' }
+        %i.icon-play.icon-white
+    
+  / Carousel nav
+  %a.carousel-control.left{ :href => "#myCarousel",  'data-slide' => "prev"}
+    &lsaquo;
+  %a.carousel-control.right{ :href => "#myCarousel",  'data-slide' => "next"}
+    &rsaquo;
+    
+.player-position
+  .player-time.player-time-played
+  .player-time.player-time-remaining
+    
+  .player-position-slider-wrapper
+    .player-position-slider
+
+

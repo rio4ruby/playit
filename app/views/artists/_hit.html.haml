@@ -1,0 +1,6 @@
+- all_albums = elem.albums.uniq
+-# - all_tracks = all_albums.map{|alb| alb.audio_files.limit_to(elem) }.flatten
+- if all_albums.size > 0
+  = render :partial => "artists/elem", :object => elem
+- else
+  = render :partial => "albums/elem", :object => all_albums.first

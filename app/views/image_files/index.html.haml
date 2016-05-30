@@ -1,0 +1,21 @@
+%h1 Listing image_files
+
+%table
+  %tr
+    %th Filename
+    %th File dir
+    %th
+    %th
+    %th
+
+  - @image_files.each do |image_file|
+    %tr
+      %td= image_file.filename
+      %td= image_file.file_dir
+      %td= link_to 'Show', image_file
+      %td= link_to 'Edit', edit_image_file_path(image_file)
+      %td= link_to 'Destroy', image_file, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Image file', new_image_file_path

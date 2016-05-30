@@ -1,0 +1,7 @@
+%h4 Facets
+%p
+  = "#{search.facet(:artist_id).rows.size} Artists"
+%p
+  = "#{search.facet(:album_id).rows.size} Albums"
+%p
+  = "#{search.facet(:song_id).rows.size} Songs"

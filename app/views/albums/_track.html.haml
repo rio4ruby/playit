@@ -1,0 +1,7 @@
+%tr
+  %td.tracknum=track.tracknum
+  %td.title=track.song.name
+  - if show_artist
+    %td.artist=track.artist.name
+  %td.duration=Time.at(track.length).strftime("%M:%S").sub(/^0/,'')
+  

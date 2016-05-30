@@ -1,0 +1,5 @@
+%tr
+  %td=track.tracknum
+  %td=track.song.name
+  %td=Time.at(track.length).strftime("%M:%S").sub(/^0/,'')
+  

@@ -1,0 +1,5 @@
+.hits
+  = render(:partial => 'home/hit', :collection => search.hits, :as => :hit, :locals => { :search => search } )
+%footer{ :class => 'sr-pagination' }
+  = paginate search.hits
+  

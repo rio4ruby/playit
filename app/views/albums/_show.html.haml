@@ -1,0 +1,41 @@
+- content_for :tabs_head do
+  %li{ :class => (@tab == 'tab-album' ? 'active' :'') }
+    %a{ :href => "#tab-album", 'data-toggle' => "tab" } Album
+
+- content_for :tabs_content do
+  .tab-pane#tab-album{ :class => (@tab == 'tab-album' ? 'active' :'') }
+
+    - model_class = @album.class
+    - image_file = @album.album_image_file
+    - audio_files = @album.audio_files.page(params[:album_page]).per(20)
+    - album_artist = @album.album_artist
+    .album-show
+      .row
+        .span9
+          .page-header
+            %h1=@album.name
+            - if album_artist
+              %h4=link_to album_artist.name, artist_path(album_artist.id)
+            = link_to "Add to Playing", albums_add_to_playing_path(:id => @album.id)
+      .row
+        .span2
+          .image
+            - if image_file
+              %img{ :src => image_file.imageurl}
+        .span7
+          .row
+            .span7
+              %table.table.table-striped.table-condensed
+                %thead
+                  %tr
+                    %th.tracknum="#"
+                    %th.title Title
+                    - if !album_artist
+                      %th.artist Artist
+                    %th.duration Length
+                %tbody
+                  = render :partial => "albums/track", :collection => audio_files, :locals => { :show_artist => !album_artist }
+          .row
+            .span7
+              = paginate audio_files, :param_name => :album_page, :params => { :tab => 'tab-album' }
+

@@ -1,0 +1,18 @@
+.row
+  .span12
+    = render :partial => 'carousel', :locals  => { :nodetree => @nodetree, :node_id => @node_id, :audio_file_nodes => @audio_file_nodes }
+
+.row
+  .span12
+    .player-info
+      .player-btn.player-btn-backward
+        %i.icon-backward
+      .player-btn.player-btn-forward
+        %i.icon-forward
+      .player-txt
+        #node-player
+
+
+#the-player
+-# = render :partial => 'list_nodes/node', :locals => { :nodetree => @nodetree, :node_id => @node_id }
+

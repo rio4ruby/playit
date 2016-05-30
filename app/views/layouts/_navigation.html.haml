@@ -1,0 +1,31 @@
+= link_to "Playit", root_path, :class => 'brand'
+.nav-collapse
+
+  -# %form.navbar-search{:action => '/home/dosearch', 'data-remote' => 'true', :method => 'get'}
+  -#   %input#q.search-query.span3{ :type => 'text', :placeholder => "Search", :autocomplete => 'off' }
+
+  %ul.nav.pull-right
+    %li.dropdown
+      %a.dropdown-toggle{ :href => "#", "data-toggle" => "dropdown" }
+        %i.icon-user.icon-white
+        %b.caret
+      %ul.dropdown-menu
+        - if user_signed_in?
+          %li=link_to('Logout', destroy_user_session_path, :method=>'delete')
+        - else
+          %li=link_to('Login', new_user_session_path)
+        - if user_signed_in?
+          %li=link_to(current_user.email, edit_user_registration_path)
+          - if current_user.has_role? :admin
+            %li=link_to('Admin', users_path)
+        - else
+          %li=link_to('Sign up', new_user_registration_path)
+
+      
+  -# url = (params[:controller] =~ /^devise/ ? '/home/main' : url_for( :controller => params[:controller], :action => 'search'))
+  - url = (params[:controller] =~ /^devise/ ? '/home/main' : url_for( :controller => params[:controller], :action => params[:action]))
+  - Rails.logger.info("NAV BAR SEARCH: " + " controller=" + params[:controller] + " action=" + params[:action] + " url=" + url + " q=" + @q.to_s)
+  .search-form-wrapper
+    = form_tag(url, :method => "get", :class => 'navbar-search pull-right form-search') do
+      = search_field_tag(:q,@q, :class => 'search-query span4', :placeholder => 'Search')
+      %i{ :class => "icon-remove clear-search-field" }

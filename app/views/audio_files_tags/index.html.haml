@@ -1,0 +1,21 @@
+%h1 Listing audio_files_tags
+
+%table
+  %tr
+    %th Audio file
+    %th Tag
+    %th
+    %th
+    %th
+
+  - @audio_files_tags.each do |audio_files_tag|
+    %tr
+      %td= audio_files_tag.audio_file
+      %td= audio_files_tag.tag
+      %td= link_to 'Show', audio_files_tag
+      %td= link_to 'Edit', edit_audio_files_tag_path(audio_files_tag)
+      %td= link_to 'Destroy', audio_files_tag, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Audio files tag', new_audio_files_tag_path

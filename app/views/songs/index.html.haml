@@ -1,0 +1,25 @@
+- model_class = Song.new.class
+.container-fluid
+  .row-fluid
+    .span12
+      %h1=t '.title', :default => model_class.model_name.human.pluralize
+  .row-fluid
+    .span12
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th= model_class.human_attribute_name(:name)
+            %th.artists Artist
+            %th.albums Album
+        %tbody
+          - @songs.each do |song|
+            - artists = song.artists
+            - albums = song.albums
+            %tr
+              %td= link_to song.name, song_path(song)
+              %td=(artists.size == 1  ? link_to(artists[0].name,artist_path(artists[0])) : pluralize(artists.size,'Artist'))
+              %td=(albums.size == 1  ? link_to(albums[0].name,album_path(albums[0]) ): pluralize(albums.size,'Album'))
+  .row-fluid
+    .span12
+      = paginate @songs
+  

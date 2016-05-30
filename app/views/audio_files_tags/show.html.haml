@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Audio file:
+  = @audio_files_tag.audio_file
+%p
+  %b Tag:
+  = @audio_files_tag.tag
+
+= link_to 'Edit', edit_audio_files_tag_path(@audio_files_tag)
+\|
+= link_to 'Back', audio_files_tags_path

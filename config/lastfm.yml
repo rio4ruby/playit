@@ -1,0 +1,12 @@
+development:
+  api_key: "5894069868b1e5c78b334454aad49d9c"
+  secret: "e681ed38a5d78ffe1b3ad2e748520948"
+
+production:
+  api_key: "5894069868b1e5c78b334454aad49d9c"
+  secret: "e681ed38a5d78ffe1b3ad2e748520948"
+
+test:
+  api_key: "5894069868b1e5c78b334454aad49d9c"
+  secret: "e681ed38a5d78ffe1b3ad2e748520948"
+

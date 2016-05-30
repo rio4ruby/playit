@@ -1,0 +1,23 @@
+.player-inner
+  %a.prev.play-control-wrapper.play-wrapper{ :href=>"#player-carousel", 'data-slide' => 'prev' }
+    &lsaquo;
+  .play-carousel-wrapper.play-wrapper
+    #player-carousel.carousel.slide
+      .carousel-inner
+        = render :partial => "one/playlist_playable_items", :locals => { :nodetree => @nodetree, :node_id => @node_id, :playing_playdata => @playdata }
+
+      .car-overlay
+        %a.playbutton{:href => '#' }
+          %i.icon-play
+  #play-prog-wrapper
+    #play-progress.progress
+      #prog.bar.bar-info.prog{ :style => "width: 60%" }
+
+  %a.next.play-control-wrapper.play-wrapper{ :href=>"#player-carousel", 'data-slide' => 'next' }
+    &rsaquo;
+
+-#    = render :partial => 'carousel', :locals  => { :nodetree => @nodetree, :node_id => @node_id, :playing_playdata => @playdata }
+
+#the-player
+-# = render :partial => 'list_nodes/node', :locals => { :nodetree => @nodetree, :node_id => @node_id }
+

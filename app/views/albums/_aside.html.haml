@@ -1,0 +1,57 @@
+- case context_rec
+- when album
+  .aside-album.playable{ :id => "as-album-#{album.id}" }
+    = render :partial => 'albums/elem', :object => album, :locals => { :tracks => true, :imgsz => 'extralarge' }
+- when ::AudioFile
+  .elem-image
+    %img{ :src => image_album_path(album.id,:sz => 'extralarge')}
+  .name
+    %h5=album.name
+- when ::Artist
+  - case lostyle
+  - when 'tbl'
+    %tr.elem.playable{ :id => "as-album-#{album.id}" }
+      %td.elem-image
+        = link_to %{<img src="#{albumart_url(album,'medium')}" border="0" />}.html_safe, artist_album_add_path(context_rec.id,album.id), :remote => true, :title => "Add '#{album.name}' to Playing"
+      %td
+        = album.name
+  - else
+    .elem.playable{ :id => "as-album-#{album.id}" }
+      .elem-image{ :class => lostyle }
+        = link_to %{<img src="#{albumart_url(album,'extralarge')}" border="0" />}.html_safe, artist_album_add_path(context_rec.id,album.id), :remote => true, :title => "Add '#{album.name}' to Playing"
+      .name
+        %h5=album.name
+      .tracks{ :class => lostyle }
+        %table.table.table-striped.table-condensed
+          - album.audio_files.limit_to(context_rec).each do |af|
+            = render :partial => af, :locals => {:context_rec => album, :lostyle => lostyle }
+            
+
+-# - content_for :header do
+-#   - if context_rec == album
+-#     - image_file = album.album_image_file
+-#     .image
+-#       - if image_file
+-#         %img{ :src => image_file.imageurl}
+-#     .name
+-#       %h5=album.name
+
+-# - content_for :tab_menu do
+-#   - case context_rec.class.to_s
+-#   - when 'AudioFile'
+-#     %li
+-#       %a{ :href => "#sb-tab-album",  'data-toggle' => "pill"} Album
+-#   - when 'Album'
+-#     %li
+-#       %a{ :href => "#sb-tab-tracks",  'data-toggle' => "pill"} Tracks
+    
+-# - content_for :tab_content do
+-#   - case context_rec.class.to_s
+-#   - when 'AudioFile'
+-#     .tab-pane#sb-tab-album
+-#       = render :partial => album, :locals => { :context_rec => album }
+-#   - when 'Album'
+-#     .tab-pane#sb-tab-tracks
+-#       %table.table.table-striped.table-condensed
+-#         - album.audio_files.each do |af|
+-#           = render :partial => af, :locals => {:context_rec => context_rec}

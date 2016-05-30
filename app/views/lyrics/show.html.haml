@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b L artist:
+  = @lyric.l_artist
+%p
+  %b L song:
+  = @lyric.l_song
+%p
+  %b Text:
+  = @lyric.text
+%p
+  %b L url:
+  = @lyric.l_url
+%p
+  %b Artist:
+  = @lyric.artist
+%p
+  %b Song:
+  = @lyric.song
+
+= link_to 'Edit', edit_lyric_path(@lyric)
+\|
+= link_to 'Back', lyrics_path

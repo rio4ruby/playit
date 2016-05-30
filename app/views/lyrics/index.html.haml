@@ -1,0 +1,29 @@
+%h1 Listing lyrics
+
+%table
+  %tr
+    %th L artist
+    %th L song
+    %th Text
+    %th L url
+    %th Artist
+    %th Song
+    %th
+    %th
+    %th
+
+  - @lyrics.each do |lyric|
+    %tr
+      %td= lyric.l_artist
+      %td= lyric.l_song
+      %td= lyric.text
+      %td= lyric.l_url
+      %td= lyric.artist
+      %td= lyric.song
+      %td= link_to 'Show', lyric
+      %td= link_to 'Edit', edit_lyric_path(lyric)
+      %td= link_to 'Destroy', lyric, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Lyric', new_lyric_path

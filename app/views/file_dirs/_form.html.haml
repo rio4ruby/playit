@@ -1,0 +1,9 @@
+= simple_form_for(@file_dir) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :ancestry
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,8 @@
+$('.sr-hits').html("<%= escape_javascript(render(:partial => 'hit', :collection => @search.hits, :as => :hit, :locals => { :search => @search } )) %>");
+
+$('.sr-pagination').html("<%= escape_javascript(render(:partial => 'search_pagination', :locals => { :search => @search } )) %>");
+
+$('.sr-pagination a').attr('data-remote', 'true');
+
+$('.sr-hits').watchhover();
+init_sr_links();

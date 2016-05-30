@@ -1,0 +1,26 @@
+= simple_form_for(@audio_file) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :filename
+    = f.association :file_dir
+    = f.input :file_size
+    = f.input :file_modified_time
+    = f.association :artist
+    = f.association :album
+    = f.input :song
+    = f.input :references
+    = f.association :genre
+    = f.input :tracknum
+    = f.input :bitrate
+    = f.input :samplerate
+    = f.input :length
+    = f.input :layer
+    = f.input :mpeg_version
+    = f.input :boolean
+    = f.input :audio_start
+    = f.input :audio_length
+    = f.input :mime_type
+
+  .form-actions
+    = f.button :submit

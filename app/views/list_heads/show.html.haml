@@ -1,0 +1,20 @@
+- model_class = @list_head.class
+%h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %br
+  = @list_head.user_id
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @list_head.name
+%p
+  %strong= model_class.human_attribute_name(:is_playing) + ':'
+  %br
+  = @list_head.is_playing
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), list_heads_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_list_head_path(@list_head), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), list_head_path(@list_head), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'

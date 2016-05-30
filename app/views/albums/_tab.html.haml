@@ -1,0 +1,30 @@
+- model_class = Album.new.class
+.row
+  .span9
+    %table.table.table-striped
+      %thead
+        %tr
+          %th.image
+          %th.title= model_class.human_attribute_name(:name)
+          %th.artists Artist
+          %th.tracks Track
+          %th.actions Actions
+      %tbody
+        - @albums.each do |album|
+          - image_file = album.album_image_file
+          - audio_files = album.audio_files
+          - artists = album.artists.uniq
+          %tr
+            %td.image
+              - if image_file
+                %img{ :src => image_file.imageurl, :height => 42}
+
+            %td= link_to album.name, album_path(album)
+            %td=(artists.size == 1  ? artists[0].name : pluralize(artists.size,'Artist'))
+            %td=(audio_files.size == 1  ? audio_files[0].song.name : pluralize(audio_files.size,'Track'))
+            %td=link_to "Add to Playing", albums_add_to_playing_path(:id => album.id, :page => params[:page]), :remote => true
+              
+
+.row
+  .span9
+    = paginate @albums

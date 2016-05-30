@@ -1,0 +1,21 @@
+%h1 Listing file_dirs
+
+%table
+  %tr
+    %th Name
+    %th Ancestry
+    %th
+    %th
+    %th
+
+  - @file_dirs.each do |file_dir|
+    %tr
+      %td= file_dir.name
+      %td= file_dir.ancestry
+      %td= link_to 'Show', file_dir
+      %td= link_to 'Edit', edit_file_dir_path(file_dir)
+      %td= link_to 'Destroy', file_dir, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New File dir', new_file_dir_path

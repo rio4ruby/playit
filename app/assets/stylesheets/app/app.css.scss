@@ -1,0 +1,39 @@
+#app {
+    margin-top: 60px;
+    .remember {
+        margin-bottom: 0.5em;
+        overflow: auto;
+        input[type="checkbox"] {
+            float: left;
+            margin-right: 0.5em;
+        }
+        label {
+            line-height: 28px;
+            vertical-align: middle;
+        }
+    }
+    .name {
+     }
+    .email {
+     }
+    .pswd {
+     }
+    .submit {
+        margin-bottom: 1em;
+        margin-top: 1em;
+    }
+    .links {
+        a {
+            text-decoration: none;
+        }
+    }
+
+}
+
+#left-side {
+    background-color: #ffe;
+    .left-content {
+        padding: 1em;
+        border: 1px dotted #ccc;
+    }
+}

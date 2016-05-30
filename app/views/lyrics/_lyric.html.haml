@@ -1,0 +1,9 @@
+
+- content_for :tab_menu do
+  %li
+    %a{ :href => "#sb-tab-lyric",  'data-toggle' => "pill"} Lyrics
+
+- content_for :tab_content do
+  .tab-pane#sb-tab-lyric
+    %pre=lyric.text
+

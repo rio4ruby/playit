@@ -1,0 +1,10 @@
+.span1.score
+  = "%.3f" % hit.score
+.span1.class_name
+  = hit.class_name
+.span4.name
+  = hit.stored(:name).first
+.span2
+  = hit.instance.artists.uniq.first(3).map{|a| a.name }.join(", ")
+.span4
+  = hit.instance.albums.uniq.first(3).map{|a| a.name }.join(", ")

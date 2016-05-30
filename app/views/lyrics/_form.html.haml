@@ -1,0 +1,13 @@
+= simple_form_for(@lyric) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :l_artist
+    = f.input :l_song
+    = f.input :text
+    = f.input :l_url
+    = f.association :artist
+    = f.association :song
+
+  .form-actions
+    = f.button :submit

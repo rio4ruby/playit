@@ -1,0 +1,11 @@
+%article#playing-lyric
+  %header
+    %h3=@audio_file.song_name
+    %h4=@audio_file.artist_name
+    %h5=@audio_file.album_name
+  %p  
+    - if @audio_file.lyric
+      = @audio_file.lyric.html_text.html_safe
+    - else
+      Lyrics not available
+    

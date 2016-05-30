@@ -1,0 +1,15 @@
+.span1
+  = "%.3f" % hit.score
+.span11.audio_file
+  .image
+    = image_tag("note-blue-32.png")
+  %span.duration
+    = Time.at(hit.instance.length).strftime("%M:%S").sub(/^0/,'')
+  %span.song
+    = hit.instance.song.name
+  =" - "
+  %span.artist
+    = hit.instance.artist.name
+  =" - "
+  %span.album
+    = hit.instance.album.name

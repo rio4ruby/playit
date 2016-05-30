@@ -1,0 +1,15 @@
+- case context_rec
+- when audio_file
+  %h3= audio_file.song_name
+  %h6= audio_file.artist_name
+  = render :partial => audio_file.album, :locals => {:context_rec => context_rec, :lostyle => ''}
+  - if audio_file.lyric
+    %hr
+    %p=audio_file.lyric.html_text.html_safe
+
+- when ::Album
+  %tr.elem.playable{ :id => "sr-as-album-#{context_rec}-audio_file-#{audio_file}" }
+    %td.elem-image{ :class => 'aside-note' }
+      =link_to image_tag("note-blue-16.png"), add_audio_file_path(audio_file.id), :remote => true, :title => "Add '#{audio_file.song_name}' to Playing"
+    %td=audio_file.tracknum
+    %td=audio_file.song_name

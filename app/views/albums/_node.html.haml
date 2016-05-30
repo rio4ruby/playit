@@ -1,0 +1,23 @@
+- image_file = album.album_image_file
+- audio_files = album.audio_files.page(params[:page]).per(10)
+.span1
+  = album.class.to_s
+.span11
+  .image
+    - if image_file
+      %img{ :src => image_file.imageurl}
+    - else
+      = image_tag "256x256/devices/media-optical-audio_mount.png"
+  .info
+    %h5= link_to album.name, album_path(album.id)
+    .artists
+      - artists = album.artists.uniq
+      = artists.first(3).map{|a| link_to a.name, artist_path(a.id) }.join(", ").html_safe
+      = (artists.size > 3 ? " &hellip;".html_safe : "")
+    .songs
+      - songs = album.songs.uniq
+      = album.songs.uniq.first(3).map{|a| a.name }.join(", ")
+      = (songs.size > 3 ? " &hellip;".html_safe : "")
+
+
+    

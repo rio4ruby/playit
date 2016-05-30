@@ -1,0 +1,12 @@
+- model_class = @song.class
+%h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @song.name
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), songs_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(@song), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(@song), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'

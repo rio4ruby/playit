@@ -1,0 +1,7 @@
+- case context_rec
+- when artist
+  %h3.name=artist.name
+  .albums
+    %table.table.table-striped.table-condensed
+      - artist.albums.uniq.each do |album|
+        = render :partial => album, :locals => {:context_rec => context_rec, :lostyle => 'tbl' }

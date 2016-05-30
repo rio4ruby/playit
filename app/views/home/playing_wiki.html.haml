@@ -1,0 +1,6 @@
+.afname
+  = @audio_file.lyric.text.gsub("\n",'<br/>').html_safe
+  %p
+    - wikiname = @audio_file.artist.name.gsub(/\s/,'_')
+    - url = "/w/index.php?action=render&title=" + wikiname;
+    = url

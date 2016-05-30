@@ -1,0 +1,31 @@
+.player-position {
+  overflow: auto;
+  position: relative;
+  margin-top: 1em; }
+  .player-position .player-time {
+    font-size: 120%;
+    width: 10%;
+    font-weight: bold; }
+  .player-position .player-time-played {
+    text-align: left;
+    float: left; }
+  .player-position .player-time-remaining {
+    width: 10%;
+    text-align: right;
+    float: right; }
+  .player-position .player-position-slider-wrapper {
+    vertical-align: middle;
+    width: 80%;
+    height: 16px;
+    margin-top: -6px;
+    position: absolute;
+    top: 50%;
+    left: 10%; }
+    .player-position .player-position-slider-wrapper .ui-slider-horizontal {
+      height: 8px;
+      margin-top: 1px; }
+      .player-position .player-position-slider-wrapper .ui-slider-horizontal a.ui-slider-handle {
+        height: 16px;
+        width: 12px; }
+        .player-position .player-position-slider-wrapper .ui-slider-horizontal a.ui-slider-handle:hover {
+          cursor: pointer; }

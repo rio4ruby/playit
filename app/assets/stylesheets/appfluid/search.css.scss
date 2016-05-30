@@ -1,0 +1,120 @@
+.sidebar {
+    h5 {
+        text-align: center;
+        margin-bottom: 0.5em;
+        background-color: #ddd;
+        padding: 0.2em;
+    }
+    aside {
+        margin-bottom: 1em;
+    }
+    aside.albums {
+        height: 300px;
+        border: 1px solid #eee;
+    }
+    aside.artists {
+        height: 300px;
+        border: 1px solid #eee;
+    }
+    li {
+        line-height: 14px;
+    }
+    p {
+        margin: 0 0 3px;
+    }
+}
+header.search {
+    background-color: #eaeaea;
+    padding: 2em;
+    margin-bottom: 1em;
+    margin-top: -20px;
+    form {
+        margin-bottom: 0px;
+        text-align: center;
+    }
+    input.cbbtn {
+        
+    }
+    #search-button {
+   //     display: inline-block;
+    }
+    .btn-group {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 1em;
+    }
+    input[type="search"] {
+        width: 50%;
+    }
+}
+#search-options {
+    input {
+        display: none;
+    }
+}
+.sr-hits {
+    .row-fluid [class*="span"] {
+        min-height: 12px;
+    }
+    .hit-row {
+        padding: 0.5em;
+        &:hover {
+            background-color: #eee;
+        }
+        .score {
+            text-align: right;
+            display: inline-block;
+        }
+        .hit-score {
+            text-align: right;
+            float: right;
+            margin-left: 1em;
+            color: #88d;
+        }
+        .image {
+        }
+        &.Artist {
+            li {
+                padding-top: 0.3em;
+                overflow: auto;
+                .image {
+                    float: left;
+                    margin-right: 1em;
+                    img {
+                        height: 32px;
+                    }
+                }
+            }
+        }
+        &.Album {
+            .image {
+                float: left;
+                margin-right: 1em;
+                img {
+                    height: 75px;
+                }
+            }
+        }
+        &.AudioFile {
+            .image {
+                float: left;
+                margin-right: 1em;
+                img {
+                    height: 24px;
+                }
+            }
+            .song {
+                font-weight: bold;
+            }
+            .artist {
+            }
+            .album {
+            }
+            .duration {
+                float: right;
+            }
+        }
+    }
+}
+
+

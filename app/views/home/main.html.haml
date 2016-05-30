@@ -1,0 +1,14 @@
+- content_for :page_head do
+  = render :partial => 'home/page_head'
+
+- content_for :left_side do
+  = render :partial => 'home/playlist'
+
+- content_for :tabs_head do
+  %li
+    %a{ :href => "#tab-search", 'data-toggle' => "tab" } Search Results
+
+- content_for :tabs_content do
+  .tab-pane.active#tab-search
+    = render :partial => 'home/main'
+

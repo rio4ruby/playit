@@ -1,0 +1,125 @@
+$pnsize: 82px;
+$ctlborder: 4px;
+header#main-menu {
+}
+
+#player {
+   background-color: #333;
+   margin: -20px;
+   padding: 20px;
+   padding-bottom: 5px;
+   .player-inner {
+      position: relative;
+      height: $pnsize+60;
+      .play-wrapper {
+         position: absolute;
+         top:0;
+         line-height: $pnsize - ($ctlborder*2) - $ctlborder - 6;
+         text-align: center;
+         text-decoration: none;
+         color: black;
+      }
+      .play-control-wrapper {
+         background-color: #ddd;
+
+         width: $pnsize - ($ctlborder*2);
+         height: $pnsize - ($ctlborder*2);
+         font-size: $pnsize;
+         border: $ctlborder solid white;
+         border-radius: ($pnsize + ($ctlborder*2))/2 ;
+         
+         &.prev {
+            left: 0;
+         }
+         &.next {
+            right: 0;
+         }
+         
+      }
+      .play-carousel-wrapper {
+         right: $pnsize + 5;
+         left: $pnsize + 5;
+         height: $pnsize;
+      }
+      .car-overlay {
+         background-color: transparent;
+         line-height: $pnsize;
+         right: 0;
+         left: 0;
+         height: $pnsize;
+         position: absolute;
+         top: 0;
+         cursor: pointer;
+      }
+   }
+
+}
+#player-carousel {
+   color: #333;
+   .item {
+        //margin-left: 65px;
+        //margin-right: 65px;
+      //border: 1px solid #eee;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      $item-padding: 2px;
+      padding: $item-padding;
+      .listnode-elem {
+         border-radius: 10px;
+         height:  $pnsize - ($ctlborder*2) - ($item-padding*2) ;
+         background-color: #d9edf7;
+         padding: 4px;
+         .elem-data {
+            height: 100%
+         }
+         .elem-image {
+            float: left;
+         }
+         .tracknum, .listnode-controls, .url {
+            display: none;
+         }
+         .song {
+            font-size: 150%;
+            margin-bottom: 5px;
+            text-align: left;
+            //float: left;
+            //clear:right;
+         }
+         .duration {
+            display: none;
+         }
+         .artist {
+            font-size: 110%;
+            float: left;
+            clear: left;
+         }
+         .album {
+            color: #555;
+            font-size: 100%;
+            float: right;
+         }
+         .image {
+            margin-bottom: 3px;
+         }
+      }
+   }
+   
+}
+
+#play-prog-wrapper {
+   position: absolute;
+   bottom: 0;
+   height: 30px;
+   left: $pnsize + 5;
+   right: $pnsize + 5;
+   .progress {
+      height: 30px;
+   }
+   .noTransition {
+      -moz-transition: none;
+      -webkit-transition: none;
+      -o-transition: color 0 ease-in;
+      transition-duration: 0s;
+   }
+}
+

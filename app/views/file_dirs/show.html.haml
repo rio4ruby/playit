@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @file_dir.name
+%p
+  %b Ancestry:
+  = @file_dir.ancestry
+
+= link_to 'Edit', edit_file_dir_path(@file_dir)
+\|
+= link_to 'Back', file_dirs_path

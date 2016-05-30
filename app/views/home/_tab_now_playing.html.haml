@@ -1,0 +1,23 @@
+-# .row
+-#   .span9
+-#     %header.search
+-#       = form_tag("/home/dosearch", :method => "get", :class => 'form-search', :remote => true) do
+-#         = search_field_tag(:q,@q, :class => 'inline search-query', :autocomplete => 'off')
+-#         = submit_tag("Search", :id => 'search-button', :class => 'btn' )
+
+-#         .btn-group{ "data-toggle" => "buttons-checkbox", :id => 'search-options' }
+-#           %label.btn.btn-primary{:for => "Artist", :class=>"#{params[:Artist] ? 'active' : ''}"} Artist
+-#           = check_box_tag("Artist","1",params[:Artist],:class => "inline")
+-#           %label.btn.btn-primary{:for => "Album", :class=>"#{params[:Album] ? 'active' : ''}"} Album
+-#           = check_box_tag("Album","1",params[:Album],:class => "inline")
+-#           %label.btn.btn-primary{:for => "AudioFile", :class=>"#{params[:AudioFile] ? 'active' : ''}"} Track
+-#           = check_box_tag("AudioFile","1",params[:AudioFile],:class => "inline")
+.row
+  .span5
+    %blockquote#lyricside
+      "Lyrics Here"
+  .span4
+    #wikiside-wrapper
+      #wikiside
+        .wiki-artist.wiki-artist-active
+          "Wiki Artist"

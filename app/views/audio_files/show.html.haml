@@ -1,0 +1,63 @@
+%p#notice= notice
+
+%p
+  %b Filename:
+  = @audio_file.filename
+%p
+  %b File dir:
+  = @audio_file.file_dir
+%p
+  %b File size:
+  = @audio_file.file_size
+%p
+  %b File modified time:
+  = @audio_file.file_modified_time
+%p
+  %b Artist:
+  = @audio_file.artist
+%p
+  %b Album:
+  = @audio_file.album
+%p
+  %b Song:
+  = @audio_file.song
+%p
+  %b References:
+  = @audio_file.references
+%p
+  %b Genre:
+  = @audio_file.genre
+%p
+  %b Tracknum:
+  = @audio_file.tracknum
+%p
+  %b Bitrate:
+  = @audio_file.bitrate
+%p
+  %b Samplerate:
+  = @audio_file.samplerate
+%p
+  %b Length:
+  = @audio_file.length
+%p
+  %b Layer:
+  = @audio_file.layer
+%p
+  %b Mpeg version:
+  = @audio_file.mpeg_version
+%p
+  %b Boolean:
+  = @audio_file.boolean
+%p
+  %b Audio start:
+  = @audio_file.audio_start
+%p
+  %b Audio length:
+  = @audio_file.audio_length
+%p
+  %b Mime type:
+  = @audio_file.mime_type
+
+= link_to 'Edit', edit_audio_file_path(@audio_file)
+\|
+= link_to 'Back', audio_files_path

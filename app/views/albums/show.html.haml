@@ -1,0 +1,3 @@
+= render :partial => 'home/playing'
+= render :partial => 'home/index', :locals => { :q => @q, :search => @search, :album => @album }
+= render :partial => 'albums/show', :locals => { :album => @album }

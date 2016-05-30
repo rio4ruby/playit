@@ -1,0 +1,15 @@
+- content_for :tabs_head do
+  %li
+    %a{ :href => "#tab-artist", 'data-toggle' => "tab" } Artist
+
+- content_for :tabs_content do
+  .tab-pane.active#tab-artist
+    .artist-show
+      .row
+        .span9
+          .page-header
+            %h1=artist.name
+      .row
+        .span9
+          = render :partial => "artists/album", :collection => artist.albums.uniq
+
