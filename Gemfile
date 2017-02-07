@@ -52,7 +52,7 @@ gem "activeadmin"
 gem "meta_search", ">= 1.1.0.pre"
 
 
-gem 'rmagick'
+gem 'rmagick', ">= 2.16.0"
 gem 'RedCloth'
 gem 'hpricot'
 gem 'ruby_parser'
