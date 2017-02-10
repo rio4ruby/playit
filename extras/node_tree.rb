@@ -66,7 +66,8 @@ class NodeTree
     file_dir_name = file_dir_recs[af.file_dir_id].name
     file_path = [file_dir_name,af.filename].join('/')
     file_url = file_path.sub('/srv/mp3/','')
-    st.url = 'http://media.kitatdot.net/audio/' + URI.escape(file_url)
+    # st.url = 'http://media.kitatdot.net/audio/' + URI.escape(file_url)
+    st.url = '/audio/' + URI.escape(file_url)
     st
   end
   def n_child_artists(node_id)

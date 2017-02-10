@@ -23,7 +23,7 @@ class PlayersController < ApplicationController
       @playdata = @nodetree.create_playdata(@nodetree.first_audio_file_node)
     end
     if @playdata
-      cookies[:playing] = { :value => @playdata, :expires => Time.now + 3600*24*7}
+      cookies[:playing] = { :value => @playdata, expires: 7.days.from_now }
     else
       cookies[:playing] = nil
     end

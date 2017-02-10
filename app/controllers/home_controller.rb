@@ -90,7 +90,8 @@ class HomeController < ApplicationController
     @audio_file = elem_id_to_record(af_el);
     @artist = @audio_file.artist
     @wikiname = @artist.wikiname
-    @wikiurl = "/w/index.php?action=render&title=" + @wikiname;    
+    wikihost = "http://en.wikipedia.org"
+    @wikiurl = wikihost + "/w/index.php?action=render&title=" + @wikiname;    
     Rails.logger.info("URL: #{@wikiurl}")
 
     respond_to do |format|
