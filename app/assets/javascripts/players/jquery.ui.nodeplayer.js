@@ -230,7 +230,7 @@
                             //$.event.trigger('onloadplayer');
 		        },
 		        whileloading: function() {
-                            console.log("nodeplayer duration: " + smsound.durationEstimate);
+                            // console.log("nodeplayer duration: " + smsound.durationEstimate);
                             $.event.trigger('durationplayer',{ max: smsound.durationEstimate });
 		        },
 		        whileplaying: function() {
