@@ -71,6 +71,7 @@ gem 'rio',">=0.5.1"
 gem 'ruby-filemagic'
 
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'ancestry'
 gem 'acts_as_list'
 gem 'sunspot_rails'

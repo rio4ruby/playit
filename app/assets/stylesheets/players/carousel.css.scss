@@ -1,0 +1,155 @@
+#myCarousel {
+    margin-top: 1em;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    position: relative;
+    color: #333;
+    .carousel-inner {
+        &:hover {
+            .car-overlay {
+                display: block;
+            }
+        }
+    }
+    .item {
+        /* margin-left: 65px; */
+        /* margin-right: 65px; */
+        z-index: 2;
+        padding: 4px;
+        .listnode-elem {
+            height: 60px;
+            background-color: #d9edf7;
+            padding-top: 4px;
+            .elem-data {
+                height: 100%
+            }
+            .song {
+                font-size: 170%;
+                margin-bottom: 5px;
+            }
+            .duration {
+                display: none;
+            }
+            .artist {
+                font-size: 110%;
+            }
+            .album {
+                color: #555;
+                font-size: 100%;
+            }
+            .image {
+                margin-bottom: 3px;
+            }
+        }
+        border: 1px solid #eee;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+    }
+    .carousel-control {
+        left: -35px;
+        opacity: 0.5;
+        background-color: #bbb;
+        &:hover {
+            opacity: 1;
+            z-index: 3;
+            color: white;
+            background-color: black;
+        }
+        text-decoration: none;
+        color: #888;
+    }
+    .carousel-control.right {
+        left: auto;
+        right: -35px;
+    }
+
+}
+.car-overlay {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 5;
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px;
+    a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 6px;
+        text-align: center;
+        vertical-align: middle;
+        border: 4px solid white;
+        border-radius: 24px;
+        display: inline-block;
+        background-color: black;
+        opacity: 0.2;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+#pb-container {
+    width: 100%;
+    border: 1px solid blue;
+}
+#pb-position {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    &:hover {
+        .pb-overlay {
+            display: block;
+        }
+    }
+}
+.pb-overlay {
+    position: absolute;
+    background-color: transparent;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: none;
+    a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 6px;
+        text-align: center;
+        vertical-align: middle;
+        border: 4px solid white;
+        border-radius: 24px;
+        display: inline-block;
+        background-color: black;
+        opacity: 0.2;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+.pb-content0 {
+    color: #888;
+}
+#pb-content {
+    position: absolute;
+    border: 5px solid white;
+    border-radius: 23px;
+    width: 36px;
+    height: 36px;
+    top: 45%;
+    left: 50%;
+    margin-top: -18px;
+    line-height: 36px;
+    vertical-align: middle;
+    text-align: center;
+}
+
