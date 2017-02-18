@@ -114,7 +114,7 @@ class AlbumsController < InheritedResources::Base
 
 
   def image
-    album = Album.find(params[:id])
+    album = Album.includes(:album_artist).find(params[:id])
     sz = params[:sz]
     filepath = altimg(album,sz || 'medium')
     unless filepath
@@ -133,11 +133,12 @@ class AlbumsController < InheritedResources::Base
     response.headers['Cache-Control'] = "public, max-age=#{7.days.to_i}"
     response.headers['Content-Type'] = mime_type
     response.headers['Content-Disposition'] = 'inline'
- 
+    content = open(filepath,'rb').read
+    response.headers['Content-Length'] = content.size
  #   response.headers['Content-Type'] = @file.content_type
  #   response.headers['Content-Disposition'] = "attachment; size=\"#{@file.file_size}\"; filename=\"#{@file.original_filename}\""
     
-    render :text => open(filepath,'rb').read
+    render :text => content
     
   end
 

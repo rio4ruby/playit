@@ -47,9 +47,15 @@ function wf_history(params) {
     }
 
     // Change our States
-
-    params.q = params.q.replace(/\s/g,'+');
-    var url = "?q=" + params.q;
+    var url = '/?';
+    
+    if( params.q ) {
+        params.q = params.q.replace(/\s/g,'+');
+    }
+    if( !params.page ) {
+        params.page = 1;
+    }
+    url += 'q=' + params.q + '&' + 'page=' + params.page
     console.log("wf_history url=" + url);
     History.replaceState(params, "Player", url); // 
 }
@@ -254,6 +260,29 @@ function init_dragdrop_links() {
 function init_history() {
 
 }
+function init_page_links() {
+    console.log('init_page_links...');
+    $('#search-results .pagination ul li a').on('click', function(e) {
+        e.preventDefault();
+        var para = this['href'].match(/\?(.+)$/)[1].split('&').map(function(x) {
+            return x.split('=');
+        });
+        var params = {};
+        $.map( para, function(val) {
+            params[val[0]] = val[1];
+        });
+        console.log(params);
+        $.get('/',params,function(data,textStatus) {
+            console.log("search results changed page status=" + textStatus);
+            $('#search-results').html(data);
+            // bind_content_click();
+            init_sr_hover();
+            init_sr_links();
+            init_page_links();
+            wf_history(params);
+        });
+    });
+}
 
 $(document).ready(function() {
     init_wf();
@@ -265,6 +294,7 @@ $(document).ready(function() {
     bind_content_click();
     bind_clear_form_click();
     console.log("READY 8");
+    init_page_links();
     init_wf_history();
     //init_dragdrop_links();
 });

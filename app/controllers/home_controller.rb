@@ -13,13 +13,16 @@ class HomeController < ApplicationController
       srch = [Artist,Album,AudioFile] if srch.empty?
       per_page = 10
       @search = Sunspot.search(*srch) do |s|
+        s.data_accessor_for(Lyric).include = [:artist, :song]
+        s.data_accessor_for(Album).include = [:album_artist, { audio_files: [:song, :artist, { file_dir: :image_files}] }]
+        s.data_accessor_for(AudioFile).include = [:album, :artist, :song, :file_dir]
+        s.data_accessor_for(Artist).include = [:albums, { audio_files: [:album, :song, :file_dir] } ]
         s.order_by(:random) if @q == ""
         s.keywords @q
         
         s.paginate :page => params[:page], :per_page => per_page
       end
     end
-    Rails.logger.info("Main Result: search=#{@search} hits=#{@search.hits}")
 
     respond_to do |format|
       format.html
@@ -43,7 +46,6 @@ class HomeController < ApplicationController
         s.paginate :page => params[:page], :per_page => per_page
       end
     end
-    Rails.logger.info("Main Result: search=#{@search} hits=#{@search.hits}")
 
     respond_to do |format|
       format.html
