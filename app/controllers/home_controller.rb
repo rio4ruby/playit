@@ -84,7 +84,7 @@ class HomeController < ApplicationController
   end
 
   def playing_wiki
-    Rails.logger.info("Playing lyrics: #{params}")
+    Rails.logger.info("Playing wiki: #{params}")
     @playing_id = params.inspect
     Rails.logger.info("Playing ID: #{@playing_id}")
     cky = cookies[:playing]

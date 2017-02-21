@@ -45,13 +45,14 @@
         _bind_events: function() {
             var $pwb = this;
             this.element.on('playeropened',function () {
+                console.log('EVENT playeropened');
                 $(this).button('playeropened');
                 $pwb._add_player_control();
                 $(this).removeClass('btn-primary');
                 $('#playing-playlist').addClass('player-win-opened');
             });
             this.element.on('closingplayer',function () {
-                console.log("closingplayer");
+                console.log("EVENT closingplayer");
                 $pwb._remove_player_control();
                 $(this).button('reset');
                 $(this).addClass('btn-primary');
@@ -60,12 +61,13 @@
                 //$pwb._bind_events();
             });
             this.element.on('click',function () {
-                console.log("#open-window-button CLICK");
+                console.log("CLICK #open-window-button");
                 if( $pwb._playerwin ) {
                     $pwb._playerwin.close();
                     
                 }
                 else {
+                    console.log("LOADING #open-window-button");
                     $(this).button('loading');
                     $(this).one('sm2ready',function () {
                         console.log("#open-window-button sm2ready");
@@ -76,11 +78,18 @@
             });
         },
         _open_window: function() {
+            var $pwb = this;
+            console.log('_open_window');
             var miniwin = window.open ("/players/simple","mini","location=no,resizable=1,width=450,height=170");
-            this._playerwin = miniwin;
-            window.register_win(miniwin);
+            $(miniwin.document).ready(function() {
+                console.log(miniwin);
+                console.log(miniwin.location);
+                window.register_win(miniwin);
+                $pwb._playerwin = miniwin;
+            });
             return miniwin;
         },
+        
 	_init: function(){
             console.log("playerwindowbutton _init");
 	},

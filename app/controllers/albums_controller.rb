@@ -134,7 +134,8 @@ class AlbumsController < InheritedResources::Base
     response.headers['Content-Type'] = mime_type
     response.headers['Content-Disposition'] = 'inline'
     content = open(filepath,'rb').read
-    response.headers['Content-Length'] = content.size
+    #response.headers['Content-Length'] = %{"#{content.size}"}
+    response.headers['Content-Length'] = content.size.to_s
  #   response.headers['Content-Type'] = @file.content_type
  #   response.headers['Content-Disposition'] = "attachment; size=\"#{@file.file_size}\"; filename=\"#{@file.original_filename}\""
     

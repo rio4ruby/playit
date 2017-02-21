@@ -68,6 +68,7 @@ function loadwiki(data) {
     });
 }
 function load_playing_wiki() {
+    console.log('load_playing_wiki');
     $.getJSON('/home/playing_wiki', function(data) {
         var wikiname = data.wikiname;
         var sel = "#wiki-" + wikiname;
@@ -87,10 +88,10 @@ function init_tabs() {
     $('#main-tabs').on('shown', function(event) {
         console.log('#main-tabs showN id=' + $(event.target).attr('id') );
         if( $(event.target).attr('id') == 'tab-now-playing-link' ) {
-
-            // $('#wikiside').on('trackcontrol trackplayer', function(event) {
-            //     console.log("#wikiside caught " + event.type);
-            // });
+            
+            $('#wikiside').on('trackcontrol trackplayer', function(event) {
+                console.log("#wikiside caught " + event.type);
+            });
             $('#lyricside').off('trackplayer trackcontrol').on('trackplayer trackcontrol', function(event) {
                 console.log("#lyricside caught " + event.type);
                 $.ajax({
@@ -134,10 +135,10 @@ function init_tabs() {
     
 }
 
-
 $(document).ready(function() {
     load_playlist();
     init_tabs();
+    load_playing_wiki();
     $('.dropdown-toggle').dropdown();
-    $('.search-controlls button').button();
+    $('.search-controls button').button();
 });
