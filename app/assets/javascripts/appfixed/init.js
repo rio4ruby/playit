@@ -52,27 +52,72 @@ function load_playlist() {
 
 }
 function loadwiki(data) {
-    $.get(data.wikiurl, function(dat) {
-        console.log("LOADED: " + data.wikiurl);
-        var wikid = "wiki-" + data.wikiname;
-        $('.wiki-artist').removeClass('wiki-artist-active');
-        var vc = $(dat)
-            .wrapAll('<div></div>')
-            .parent()
-            .find(".infobox.vcard")
-            .wrapAll('<div class="wiki-artist wiki-artist-active" ' + "id=" + wikid + '></div>')
-            .parent();
-        console.log(vc);
-        $('#wikiside').append(vc);
-        $('#' + wikid).find('a').attr('target','_blank');
-    });
+    console.log('LOADWIKI: ');
+    console.log(data);
+    $('#wikiside').html('<h1>Hello</h1>' + '<p>' + data.wikiurl + '</p>');
+
+    // var jqxhr = $.ajax({
+    //     url: 'https://en.wikipedia.org/w/api.php',
+    //     data: { action: 'query',
+    //             titles: 'Go',
+    //             prop: 'revisions',
+    //             rvprop: 'content',
+    //             format: 'json'
+    //           },
+    //     dataType: 'json',
+    //     type: 'POST',
+    //     headers: { 'Api-User-Agent': 'Example/1.0' }
+    // }).done(function(data, textStatus, jqXHR) {
+    //     // alert( "success" );
+    // }).fail(function( jqXHR, textStatus, errorThrown) {
+    //     // alert( "error: " + textStatus + " errorThrown: " + errorThrown);
+    // });
+
+    // var jqxhr = $.ajax({
+    //     url: data.wikiurl,
+    //     data: { action: 'render',
+    //             title: 'The_Who'
+    //           },
+    //     type: 'GET',
+    //     crossDomain: true
+    // }).done(function(data, textStatus, jqXHR) {
+    //     alert( "success" );
+    // }).fail(function( jqXHR, textStatus, errorThrown) {
+    //     alert( "error: " + textStatus + " errorThrown: " + errorThrown);
+    // });
+
+
+
+
+
+    //    $.get(data.wikiurl, function(dat) {
+    //        $('#wikiside').html('<h1>Goodbye</h1>');
+    //
+    //    });
+    // $.get(data.wikiurl, function(dat) {
+    //     console.log("LOADED: " + data.wikiurl);
+    //     var wikid = "wiki-" + data.wikiname;
+    //     $('.wiki-artist').removeClass('wiki-artist-active');
+    //     var vc = $(dat)
+    //         .wrapAll('<div></div>')
+    //         .parent()
+    //         .find(".infobox.vcard")
+    //         .wrapAll('<div class="wiki-artist wiki-artist-active" ' + "id=" + wikid + '></div>')
+    //         .parent();
+    //     console.log(vc);
+    //     $('#wikiside').append(vc);
+    //     $('#' + wikid).find('a').attr('target','_blank');
+    // });
 }
 function load_playing_wiki() {
     console.log('load_playing_wiki');
     $.getJSON('/home/playing_wiki', function(data) {
+        console.log(data);
         var wikiname = data.wikiname;
         var sel = "#wiki-" + wikiname;
-        if( ! $(sel).length) {
+        console.log(sel);
+        console.log($(sel).length);
+        if( $(sel).length == 0) {
             loadwiki(data);
         }
         else {
@@ -86,19 +131,18 @@ function init_tabs() {
         $('#main-tabs a[href="#tab-search"]').tab('show'); // Select tab by name
     });
     $('#main-tabs').on('shown', function(event) {
-        console.log('#main-tabs showN id=' + $(event.target).attr('id') );
+        console.log('#main-tabs SHOWN id=' + $(event.target).attr('id') );
         if( $(event.target).attr('id') == 'tab-now-playing-link' ) {
             
             $('#wikiside').on('trackcontrol trackplayer', function(event) {
                 console.log("#wikiside caught " + event.type);
             });
             $('#lyricside').off('trackplayer trackcontrol').on('trackplayer trackcontrol', function(event) {
-                console.log("#lyricside caught " + event.type);
                 $.ajax({
                     url: '/home/playing_lyrics'
                 }).done(function(data) {
                     $('#lyricside').html(data);
-                    load_playing_wiki();
+                    //load_playing_wiki();
                 });
                 // $('#lyricside').load('/home/playing_lyrics', function() {
                 //     load_playing_wiki();
@@ -112,9 +156,7 @@ function init_tabs() {
     });
     $('#main-tabs').on('show', function(event) {
         console.log('#main-tabs show active-tab=' + o2s($(event.target)));
-        console.log($(event.target).attr('id'));
         if($(event.target).attr('id') == 'tab-now-playing-link') {
-            console.log("TRUE");
             var el = $('#playing-playlist .playing')
             //$('#wikiside').load('/w/index.php?action=render&title=The_Who');
 
@@ -138,7 +180,7 @@ function init_tabs() {
 $(document).ready(function() {
     load_playlist();
     init_tabs();
-    load_playing_wiki();
+    // load_playing_wiki();
     $('.dropdown-toggle').dropdown();
     $('.search-controls button').button();
 });

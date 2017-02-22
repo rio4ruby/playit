@@ -7,9 +7,11 @@
                 $(ui.element).find('i').removeClass('icon-pause').addClass('icon-play');
             },
             playing: function(event,ui) {
+                console.log('options.playing')
                 $(ui.element).find('i').removeClass('icon-play').addClass('icon-pause');
             },
             paused: function(event,ui) {
+                console.log('options.paused')
                 $(ui.element).find('i').removeClass('icon-pause').addClass('icon-play');
             }
         },
@@ -24,26 +26,27 @@
 	},
 
         _bind_events: function() {
-            //console.log("playbutton: bind_events");
+            console.log("playbutton: bind_events");
             var $pb = this;
             this.element.bind('click.playbutton',function(event) {
                 //$.event.trigger($pb.isPlaying() ? "pause" : "play");
-                //console.log("CLICK here isPlaying=" + $pb.isPlaying());
+                var el = $(this).html();
+                console.log("CLICK here isPlaying=" + $pb.isPlaying() + " el=" + el);
                 if( $pb.isPlaying() ) {
-                    //console.log("triggering pausecontrol.playbutton");
+                    console.log("triggering pausecontrol.playbutton");
                     $.event.trigger("pausecontrol.playbutton");
                 }
                 else {
-                    //console.log("triggering playcontrol.playbutton");
+                    console.log("triggering playcontrol.playbutton");
                     $.event.trigger("playcontrol.playbutton");
                 }
             });
             this.element.bind('playplayer',function(event) {
-                //console.log("playbutton: caught playplayer");
+                console.log("playbutton: caught playplayer");
                 $pb.play();
             });
             this.element.bind('pauseplayer',function(event) {
-                //console.log("playbutton: caught pauseplayer");
+                console.log("playbutton: caught pauseplayer");
                 $pb.pause();
             });
             this.element.bind('stopplayer',function(event) {
@@ -67,7 +70,7 @@
         },
         
 	play: function(){
-            //console.log("playbutton: play");
+            console.log("PLAY: " + this.isPlaying());
             if( this.isPlaying() ) {
                 return;
             }
@@ -79,6 +82,7 @@
 	},
         
 	pause: function(){
+            console.log("PAUSE: " + this.isPlaying());
             if( !this.isPlaying() ) {
                 return;
             }
@@ -100,6 +104,7 @@
             return this._state;
         },
 	isPlaying: function(){
+            // console.log('isPlaying:_getState=' + this._getState()); 
 	    return this._getState() === 'playing';
 	},
         

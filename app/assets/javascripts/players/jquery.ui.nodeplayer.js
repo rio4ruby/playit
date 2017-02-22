@@ -253,6 +253,9 @@
                     if( smsound.paused ) {
                         $.event.trigger('pauseplayer');
                     }
+                    else {
+                        $.event.trigger('playplayer');
+                    }
                 }
             }
             else {
@@ -286,9 +289,11 @@
                 $pl.mute();
             });
             this.element.bind('playcontrol',function(event) {
+                console.log('PLAYCONTROL');
                 $pl.play();
             });
             this.element.bind('pausecontrol',function(event) {
+                console.log('PAUSECONTROL');
                 $pl.play();
             });
             this.element.bind('stopcontrol',function(event) {
