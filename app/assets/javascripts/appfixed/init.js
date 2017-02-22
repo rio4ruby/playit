@@ -160,7 +160,7 @@ function init_tabs() {
             var el = $('#playing-playlist .playing')
             //$('#wikiside').load('/w/index.php?action=render&title=The_Who');
 
-            load_playing_wiki();
+            // load_playing_wiki();
             $.ajax({
                 url: '/home/playing_lyrics'
             }).done(function(data) {
