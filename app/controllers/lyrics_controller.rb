@@ -1,2 +1,2 @@
-class LyricsController < InheritedResources::Base
+class LyricsController < ApplicationController
 end

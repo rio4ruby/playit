@@ -1,4 +1,4 @@
-class ListHeadsController < InheritedResources::Base
+class ListHeadsController < ApplicationController
   layout 'appfluid'
   before_filter :authenticate_user!
 

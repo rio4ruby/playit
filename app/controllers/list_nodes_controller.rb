@@ -1,4 +1,4 @@
-class ListNodesController < InheritedResources::Base
+class ListNodesController < ApplicationController
   before_filter :authenticate_user!
 
   layout Proc.new { |controller| controller.request.xhr? ? false : 'appfixed' }

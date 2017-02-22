@@ -1,4 +1,4 @@
-class TagsController < InheritedResources::Base
+class TagsController < ApplicationController
   layout 'appfixed'
 
   def index

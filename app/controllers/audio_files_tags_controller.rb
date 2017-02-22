@@ -1,2 +1,2 @@
-class AudioFilesTagsController < InheritedResources::Base
+class AudioFilesTagsController < ApplicationController
 end

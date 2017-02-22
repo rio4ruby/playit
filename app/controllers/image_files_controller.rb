@@ -1,4 +1,4 @@
-class ImageFilesController < InheritedResources::Base
+class ImageFilesController < ApplicationController
   layout 'appfixed'
 
   def index

@@ -1,4 +1,4 @@
-class GenresController < InheritedResources::Base
+class GenresController < ApplicationController
   layout 'appfixed'
 
   def index

@@ -1,4 +1,4 @@
-class ArtistsController < InheritedResources::Base
+class ArtistsController < ApplicationController
   layout Proc.new { |controller| controller.request.xhr? ? false : 'appfixed' }
 
   def index

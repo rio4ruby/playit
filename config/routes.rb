@@ -61,10 +61,6 @@ Playit::Application.routes.draw do
 
   resources :file_dirs
 
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   authenticated :user do
     root :to => 'home#index'
     #root :to => 'one#playlist'

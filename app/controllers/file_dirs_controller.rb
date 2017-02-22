@@ -1,4 +1,4 @@
-class FileDirsController < InheritedResources::Base
+class FileDirsController < ApplicationController
   layout 'appfixed'
 
   def index

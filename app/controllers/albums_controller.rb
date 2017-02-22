@@ -1,5 +1,5 @@
 require 'filemagic'
-class AlbumsController < InheritedResources::Base
+class AlbumsController < ApplicationController
   layout Proc.new { |controller| controller.request.xhr? ? false : 'appfixed' }
 
   def index

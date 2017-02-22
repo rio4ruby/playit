@@ -1,4 +1,4 @@
-class AudioFilesController < InheritedResources::Base
+class AudioFilesController < ApplicationController
   layout Proc.new { |controller| controller.request.xhr? ? false : 'appfixed' }
 
   def index
