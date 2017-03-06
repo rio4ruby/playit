@@ -34,6 +34,8 @@ gem 'ruby-filemagic'
 gem 'ancestry'
 gem 'acts_as_list'
 
+gem 'foreigner'
+
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
